@@ -1,1 +1,4 @@
-This is just a small project with Continous deployment using a bash script after the contents are pushed via git to the remote repo.
+This is just a small project with Continous deployment using a bash script after the contents are pushed via git to the remote repo. 
+
+WORKING:
+The changes are made to the contents folder. Once a change is done and pushed to the remote repo using then new alias, the bash script will be trigerred which inturn checks if the prevous output was just an "up-to-date". If not the case, it will inturn trigger the ansible-playbook. The playbook will create a docker image and push to its repo with tag as that of the tag used in the git commit. Also tags the last built to the latest version of the new docker image . The playbook then waits for the docker hub to update the new changes and then runs the new docker container from the new latest image.The image build will only happen when a change is occured in the repository no matter how many times you manually run the playbook.
